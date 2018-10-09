@@ -6,14 +6,16 @@ from flask import send_from_directory
 
 import numpy as np
 import cv2
-
-from time import sleep
+import os
 
 app = Flask(__name__)
+app.config['ROOT_DIR'] = os.path.dirname(os.path.abspath(__file__))
+
 
 @app.route('/')
 def hello():
     return render_template('index.html')
+
 
 @app.route('/req_cc', methods=['POST'])
 def req_cc():
@@ -34,8 +36,10 @@ def req_cc():
     cv2.putText(img, text, (textX, textY), font, 1, (255, 255, 255), 2)
 
     cv2.imwrite('hello_image.jpg', img)
-    return send_from_directory('/home/hankyul/project/cc_python/', 'hello_image.jpg', as_attachment=True)
+
+    return send_from_directory(
+        app.config['ROOT_DIR'], 'hello_image.jpg', as_attachment=True)
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
