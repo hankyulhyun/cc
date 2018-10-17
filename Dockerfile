@@ -15,7 +15,7 @@ WORKDIR /app
 COPY . /app
 
 RUN pip3 install -r requirements.txt
-RUN pip3 install opencv-python
+# RUN pip3 install opencv-python
 
 EXPOSE 5000
 
