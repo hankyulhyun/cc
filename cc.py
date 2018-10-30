@@ -3,6 +3,8 @@ from flask import Flask
 from flask import render_template
 from flask import request
 from flask import send_from_directory
+from flask import redirect
+from flask import url_for
 
 import os
 
@@ -13,8 +15,46 @@ app.config['ROOT_DIR'] = os.path.dirname(os.path.abspath(__file__))
 
 
 @app.route('/')
-def hello():
+def index():
     return render_template('index.html')
+
+
+@app.route('/signin', methods=['GET', 'POST'])
+def signin():
+    if request.method == 'GET':
+        return render_template('signin.html')
+    elif request.method == 'POST':
+        name = request.form['username']
+        password = request.form['password']
+        app.logger.info("name : %s, password : %s" % (name, password))
+        return redirect(url_for('index'))
+
+
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    if request.method == 'GET':
+        return render_template('signup.html')
+    elif request.method == 'POST':
+        name = request.form['username']
+        password = request.form['password']
+        password_repeat = request.form['password_repeat']
+        app.logger.info("name : %s, password : %s - %s" % (name, password, password_repeat))
+        return redirect(url_for('signin'))
+
+
+@app.route('/workspace')
+def workspace():
+    return
+
+
+@app.route('/template')
+def template():
+    return
+
+
+@app.route('/trial')
+def trial():
+    return
 
 
 @app.route('/req_cc', methods=['POST'])
