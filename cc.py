@@ -1,4 +1,6 @@
 
+from os import  environ
+
 from flask import Flask
 from flask import render_template
 from flask import request
@@ -15,6 +17,7 @@ app.config['ROOT_DIR'] = os.path.dirname(os.path.abspath(__file__))
 
 
 @app.route('/')
+@app.route('/home')
 def index():
     return render_template('index.html')
 
@@ -92,4 +95,10 @@ def req_cc():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    HOST = environ.get('SERVER_HOST', 'localhost')
+    try:
+        PORT = int(environ.get('SERVER_PORT', '5000'))
+    except ValueError:
+        PORT = 5000
+
+    app.run(debug=True, host=HOST, port=PORT)

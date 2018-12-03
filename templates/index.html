@@ -1,13 +1,68 @@
 
 {% extends 'base.html' %}
-
-{% block header %}
-    <h1>{% block title %}Welcome{% endblock %}</h1>
-{% endblock %}
-
 {% block content %}
-    <form method="POST" action="/req_cc">
-        <input name="message" id="message" required/>
-        <input type="submit" value="Submit"/>
-    </form>
+
+
+    <!--
+    <img class="img-fluid" src="/static/image/ccio_wallpaper.png" alt="wallpapaer">
+    -->
+
+    <div class="jumbotron">
+        <h1>cc.io</h1>
+        <p class="lead">cc.io는 아주 좋아요 너무 좋아요 쓰세요 두 번 쓰세요</p>
+        <p>더 알아보기</p>
+    </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2>cc.io에 대한 소개</h2>
+                <p>cc.io 좋아요 한 번 써보세요</p>
+            </div>
+        </div>
+
+        <hr/>
+
+        <div class="row">
+            <div class="col-md-12">
+            <h2>나만의 자막 스타일을 만들어 보세요.</h2>
+            <p>배치도 하고 글씨체도 바꾸고 감싸는 박스도 만들고</p>
+            <p>배치도 하고 글씨체도 바꾸고 감싸는 박스도 만들고</p>
+            <p>배치도 하고 글씨체도 바꾸고 감싸는 박스도 만들고</p>
+            <p>배치도 하고 글씨체도 바꾸고 감싸는 박스도 만들고</p>
+            </div>
+        </div>
+
+        <hr/>
+
+        <div class="row">
+            <div class="col-md-12">
+            <h2>자막을 입력하세요.</h2>
+            <p>그냥 다다닥 치기도 하고</p>
+            <p>미리 쳐 둔것이 있다면 업로드 하세요.</p>
+            </div>
+        </div>
+
+        <hr/>
+
+        <div class="row">
+            <div class="col-md-12">
+            <h2>변환합니다.</h2>
+            <p>선택한 스타일로</p>
+            <p>한 번에 만들어서 내려 받아보세요.</p>
+            </div>
+        </div>
+
+        <hr/>
+
+        <div class="row">
+            <div class="col-md-12">
+            <h2>한 번 시도해보세요!</h2>
+            <p>아래의 입력창에 짧은 자막을 넣어보고 빠르게 결과물을 확인하세요.</p>
+            <form method="POST" action="/req_cc">
+                <input name="message" id="message" required/>
+                <button type="submit" class="btn btn-outline-secondary">확인</button>
+            </form>
+            </div>
+        </div>
+
 {% endblock %}
